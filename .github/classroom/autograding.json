@@ -1,0 +1,94 @@
+{
+  "tests": [
+    {
+      "name": "Test Addition",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testAddition",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Subtraction",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testSubtraction",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Multiplication",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testMultiplication",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Division",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testDivision",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Division by Zero",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testDivisionByZero",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Large Numbers",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testLargeNumbers",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Precision",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testPrecision",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Zero Operations",
+      "setup": "",
+      "run": "./gradlew test --tests BasicCalculatorTests.testZeroOperations",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Test Main Output",
+      "setup": "",
+      "run": "./gradlew test --tests MainTest",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    }
+  ]
+}
