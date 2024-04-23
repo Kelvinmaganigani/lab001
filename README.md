@@ -1,47 +1,58 @@
 # Lab 1: Java Basics Assignment
 
+## Introduction
+Welcome to your Java programming assignment! In this task, you will be creating a Basic Calculator application that can perform simple arithmetic operations like addition, subtraction, multiplication, and division. This assignment is designed to help you practice Java fundamentals including variables, data types, operations, loops, and selection statements.
+
 ## Objective
-To practice the basics of Java programming including variables, data types, operations, loops, and selection statements.
-
-## Description
-In this assignment, you will enhance a Java program, `Main.java`, to perform various tasks using scenarios in Java programming. The program will consist of multiple sections, each focusing on different Java fundamentals:
-
-1. **Variables and Data Types**
-2. **Arithmetic and Logical Operations**
-3. **Loops**
-4. **Selection Statements**
+- Understand and implement basic Java syntax and control structures.
+- Develop functions to perform arithmetic operations.
+- Handle user input and output in a console application.
+- Implement error handling for common input errors.
 
 ## Instructions
-- Locate the file called `Main.java` at `src/main/java/lab1/Main.java`.
-- Inside the class, you will find a main method that prints out results from four methods: `section1`, `section2`, `section3`, and `section4`.
-- Implement the code in the appropriate methods as outlined below:
+1. **Create Two Classes:**
+- Inside the project folder (src/main/java/lab1), create two Java classes:
+  - `Main.java`: This class should contain the `main` method and handle user interactions.
+  - `BasicCalculator.java`: This class should contain methods for addition, subtraction, multiplication, and division. Each method must take two `double` parameters and return a `double` value as the result.
 
-### Section 1: Variables and Data Types
-- Declare and initialize variables: an integer `num` (42), a float `average` (95.5), a character `letter` ('A'), and a boolean `isTrue` (true).
-- Challenge: Calculate the byte size of each data type using Java utilities and return a formatted string containing each variable along with its size using `StringBuilder`.
+2. **Implement Arithmetic Methods:**
+  - Each arithmetic operation (add, subtract, multiply, divide) should be implemented in the `BasicCalculator` class.
+  - Ensure to handle division by zero with appropriate error messaging.
 
-### Section 2: Arithmetic and Logical Operations
-- Perform operations involving edge cases:
-    - Compute `(num * 1000) / 3` and handle potential overflow.
-    - Calculate the sine of `average` using `Math.sin`, considering the result's precision.
-    - Use a ternary operation to decide between the modulus of `num` by an undefined value (0 by default) with error handling.
-    - Evaluate a complex logical expression combining `isTrue`, `false`, and another condition that checks if `average` is a NaN.
-- Use `StringBuilder` to construct a response string that explains each result, including error handling steps.
+3. **User Interface in the Main Class:**
+  - Use a loop to allow the user to perform multiple calculations.
+  - Prompt the user to select an operation.
+  - Get the user’s input for two numbers.
+  - Display the result of the calculation.
+  - Allow the user to continue with new calculations or exit.
 
-### Section 3: Loops
-- Implement a for loop that calculates the factorial of numbers from 1 to `num` (consider using BigInteger for large results).
-- Implement a while loop that continues until `num` is not a prime number, doubling `num` each iteration, and checking primality.
-- Return the loop results using `StringBuilder`.
+4. **Error Handling:**
+  - Add error handling to manage non-numeric inputs.
+  - Ensure the application does not crash for unexpected inputs.
 
-### Section 4: Selection Statements
-- Implement an if-else statement that evaluates whether the ASCII value of `letter` is odd or even.
-- Enhance the switch statement for `letter` with cases that involve lowercase and uppercase letters, and provide feedback on whether the input is uppercase (using `Character.isUpperCase`).
-- Return results using `StringBuilder`.
+## Example Output
+```
+Welcome to the Basic Calculator!
+Choose an operation:
+1: Addition
+2: Subtraction
+3: Multiplication
+4: Division
+5: Exit
+Select (1-5): 1
+Enter the first number: 5
+Enter the second number: 3
+Result: 8.0
+Do another calculation? (yes/no): no
+Thank you for using the Basic Calculator!
+```
 
 ## Submission
 - After completing the assignment, submit it by pushing the repository to GitHub.
 - Ensure all source code and additional files necessary to compile and run your program are included.
 
-## Tips
-- Utilize Java documentation to understand data type limits, operations, and methods like `Math.sin` and `BigInteger`.
-- Handle exceptions and edge cases to make your program robust against common programming errors.
+## Evaluation Criteria
+- **Functionality:** All functions work as expected without errors.
+- **Code Efficiency:** Code is well-organized without redundancy.
+- **Error Handling:** All user input errors are handled gracefully.
+- **Documentation:** Code is well-documented with comments explaining key sections.
