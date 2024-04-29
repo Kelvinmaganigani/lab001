@@ -1,63 +1,51 @@
+import java.io.*;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
 public class Main {
     private double num1, num2;
     private Scanner scanner;
+    public String next;
 
     private void printMenu() {
         System.out.println("Choose an operation:");
         System.out.println("1. Addition \n2. Subtraction \n3. Multiplication \n4. Division \n5. Exit");
     }
 
-    private int readChoice() {
+    private int readChoice() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         scanner = new Scanner(System.in);
         int choice = 0;
 
+        
         try {
             System.out.print("Select (1-5): ");
-            choice = scanner.nextInt();
+            choice = Integer.parseInt(br.readLine());
 
-            if (choice < 1 || choice > 5) {
-                throw new IllegalArgumentException("Invalid choice. Please enter a number between 1 and 5.");
-            }
-        } catch (java.util.InputMismatchException e) {
-            System.out.println("Invalid input. Please enter a valid integer.");
-            // Clear the input buffer
-            scanner.nextLine();
-            // Call readChoice recursively to try again
-            choice = readChoice();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            // Call readChoice recursively to try again
-            choice = readChoice();
-        } finally {
-            // Always close the scanner to avoid resource leaks
-            scanner.close();
-        }
+            if (choice < 1 || choice > 5) { throw new IllegalArgumentException("Invalid choice. Please enter a number between 1 and 5.");}
+        } 
+        catch (java.util.InputMismatchException e) { System.out.println("Invalid input. Please enter a valid integer."); scanner.nextLine(); choice = readChoice();} 
+        catch (IllegalArgumentException e) { System.out.println(e.getMessage()); choice = readChoice(); } 
+        
 
         return choice;
     }
 
-    private void readInput() {
+    private void readInput() throws IOException{
         scanner = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         try {
             System.out.print("Enter the first number: ");
-            this.num1 = scanner.nextDouble();
+            this.num1 = Integer.parseInt(br.readLine());
 
             System.out.print("Enter the second number: ");
-            this.num2 = scanner.nextDouble();
-        } catch (java.util.InputMismatchException e) {
-            System.out.println("Invalid input. Please enter a valid number.");
-            // Clear the input buffer
-            scanner.nextLine();
-            // Call readInput recursively to try again
-            readInput();
-        } finally {
-            // Always close the scanner to avoid resource leaks
-            scanner.close();
-        }
+            this.num2 = Integer.parseInt(br.readLine());
+        } 
+        catch (java.util.InputMismatchException e) { System.out.println("Invalid input. Please enter a valid number."); scanner.nextLine(); readInput();} 
+        catch (IllegalArgumentException e) { System.out.println(e.getMessage()); } 
+        catch (Exception e) { System.out.println(e.getMessage()); }
+        
     }
 
     private double performOperation(int choice) {
@@ -83,7 +71,22 @@ public class Main {
         System.out.println("Result: " + df.format(result));
     }
 
-    public static void main(String[] args) {
+    public boolean next_calculation() throws IOException{
+        boolean repeate = true;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        try{
+            System.out.print("Do another calculation? (yes/no): ");
+            this.next = br.readLine().toLowerCase().trim();
+            if (next.equals("yes")) { repeate = true;}
+            else if (next.equals("no")) { System.out.println("Thank you for using the Basic Calculator!"); repeate = false;}
+            else { System.out.println("Please enter yes/no..."); next_calculation(); }
+        }catch (Exception e) { System.out.println(e.getMessage());  repeate = false; }
+        
+        return repeate;
+    }
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Scanner scanner = new Scanner(System.in);
         Main calculator = new Main();
         boolean repeat = true;
@@ -94,25 +97,13 @@ public class Main {
 
             if (choice < 1 || choice > 5) { System.out.println("Please enter a valid choice (1-5)."); continue; }
 
-            if (choice == 5) { System.out.println("Exiting the Basic Calculator!"); break; }
+            else if (choice == 5) { System.out.println("Exiting the Basic Calculator!"); break; }
 
             calculator.readInput();
             double result = calculator.performOperation(choice);
             calculator.printResult(result);
 
-            Scanner din = new Scanner(System.in);
-            System.out.print("Do another calculation? (yes/no): ");
-            String userInput;
-            if (din.hasNextLine()) { userInput = din.nextLine().toLowerCase().trim(); }
-            else { System.out.println("No input found. Exiting Basic Calculator..."); userInput = din.nextLine().toLowerCase(); repeat = false; break;}
-
-            if (userInput.equals("no")) {
-                repeat = false;
-                System.out.println("Thank you for using the Basic Calculator!");
-            } else if (!userInput.equals("yes")) {
-                System.out.println("Invalid input. Exiting the Basic Calculator.");
-                repeat = false;
-            }
+            repeat = calculator.next_calculation();
         } while (repeat);
 
         scanner.close();
